@@ -28,8 +28,8 @@ submodules:
 	#git submodule init
 	#git submodule update
 	#cd submodules/quickstart-jfrog-artifactory && git submodule init && git submodule update
-	cd submodules/quickstart-jfrog-artifactory/submodules/quickstart-linux-bastion && git submodule init && git submodule update
-	cd submodules/quickstart-jfrog-artifactory/submodules/quickstart-amazon-eks && git submodule init && git submodule update
+	#cd submodules/quickstart-jfrog-artifactory/submodules/quickstart-linux-bastion && git submodule init && git submodule update
+	#cd submodules/quickstart-jfrog-artifactory/submodules/quickstart-amazon-eks && git submodule init && git submodule update
 
 help:
 	@echo   "make test  : executes ${VENVBIN}/taskcat"
