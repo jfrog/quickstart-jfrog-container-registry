@@ -1,6 +1,0 @@
-[submodule "submodules/quickstart-jfrog-artifactory"]
-	path = submodules/quickstart-jfrog-artifactory
-	url = https://git.trace3.io/devops/theflash.git
-	branch = DIP-509
-[submodule "quickstart-jfrog-artifactory"]
-	branch = DIP-509
