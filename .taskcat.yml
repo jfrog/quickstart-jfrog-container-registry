@@ -1,5 +1,5 @@
 project:
-  name: kidflash
+  name: quickstart-jfrog-container-registry
   owner: quickstart-eng@amazon.com
   s3_object_acl: public-read
   #s3_bucket: tcat-theflash-3ey4q58e #Bucket to upload to, highly recommend re-using a bucket
@@ -18,7 +18,7 @@ tests:
       AvailabilityZones: "$[taskcat_genaz_2]"
       DatabasePassword: "$[taskcat_genpass_8A]"
       QsS3BucketName: "$[taskcat_autobucket]"
-      QsS3KeyPrefix: "kidflash/"
+      QsS3KeyPrefix: "quickstart-jfrog-container-registry/"
       KeystorePassword: "$[taskcat_genpass_8A]"
       AnsibleVaultPass: "$[taskcat_genpass_8A]"
       JcrServerName: "artifactory"
@@ -36,7 +36,7 @@ tests:
       AvailabilityZones: "$[taskcat_genaz_2]"
       DatabasePassword: "$[taskcat_genpass_8A]"
       QsS3BucketName: "$[taskcat_autobucket]"
-      QsS3KeyPrefix: "kidflash/"
+      QsS3KeyPrefix: "quickstart-jfrog-container-registry/"
       DatabaseInstance: "db.m4.large"
       #DatabaseEngine: MySQL
       JcrVersion: "7.2.1"
@@ -56,7 +56,7 @@ tests:
       #DatabaseEngine: MySQL
       DatabasePassword: "$[taskcat_genpass_8A]"
       QsS3BucketName: "$[taskcat_autobucket]"
-      QsS3KeyPrefix: "kidflash/"
+      QsS3KeyPrefix: "quickstart-jfrog-container-registry/"
       DatabaseInstance: "db.m5.large"
       JcrVersion: "7.2.1"
       JcrServerName: "artifactory"
