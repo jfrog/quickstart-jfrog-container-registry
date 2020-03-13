@@ -26,10 +26,11 @@ venv: venv/bin/taskcat venv/bin/aws
 
 submodules:
 	git submodule init
-        git submodule update --remote --recursive
-	#cd submodules/quickstart-jfrog-artifactory && git submodule init && git submodule update
-	#cd submodules/quickstart-jfrog-artifactory/submodules/quickstart-linux-bastion && git submodule init && git submodule update
-	#cd submodules/quickstart-jfrog-artifactory/submodules/quickstart-amazon-eks && git submodule init && git submodule update
+	git submodule update --remote --recursive
+	git submodule foreach --recursive 'git submodule init'
+	git submodule foreach --recursive 'git submodule update --remote --recursive'
+	git submodule foreach --recursive 'git submodule foreach --recursive "git submodule init"'
+	git submodule foreach --recursive 'git submodule foreach --recursive "git submodule update --remote --recursive"'
 
 help:
 	@echo   "make test  : executes ${VENVBIN}/taskcat"
