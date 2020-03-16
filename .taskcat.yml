@@ -3,6 +3,8 @@ project:
   owner: quickstart-eng@amazon.com
   s3_object_acl: public-read
   #s3_bucket: tcat-theflash-3ey4q58e #Bucket to upload to, highly recommend re-using a bucket
+  lambda_source_path: submodules/quickstart-jfrog-artifactory/submodules/quickstart-amazon-eks/functions/source
+  lambda_zip_path: submodules/quickstart-jfrog-artifactory/submodules/quickstart-amazon-eks/functions/packages
   s3_enable_sig_v2: True # When v2 signature is enabled, the bastion bootstrap fails to GET THE SCRIPT!
   regions:
     - us-west-2
