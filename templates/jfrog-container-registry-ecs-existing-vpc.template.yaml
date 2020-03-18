@@ -369,7 +369,7 @@ Parameters:
       - 6
       - 7
       - 8
-    Default: 3
+    Default: 1
     Type: Number
   JcrVersion:
     Description: The version of JFrog Container Registry that you want to deploy into the Quick Start.
