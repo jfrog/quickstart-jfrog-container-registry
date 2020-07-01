@@ -34,7 +34,6 @@ Metadata:
           - ClusterName
           - InstanceType
           - VolumeSize
-          - EnableFargate
       - Label:
           default: JFrog Container Registry configuration
         Parameters:
@@ -107,8 +106,6 @@ Metadata:
         default: EC2 instance type
       VolumeSize:
         default: EBS Root volume size
-      EnableFargate:
-        default: Use Fargate with ECS
       SmCertName:
         default: JFrog Container Registry certificate secret name
       JcrServerName:
@@ -312,11 +309,6 @@ Parameters:
       Amazon Elastic Block Store (Amazon EBS) volumes of this size.
     Default: 200
     Type: Number
-  EnableFargate:
-    Description: AWS Fargate is a technology that you can use with Amazon ECS to run containers without having to manage servers or clusters of Amazon EC2 instances.
-    Default: "Enabled"
-    Type: String
-    AllowedValues: ["Disabled", "Enabled"]
   NumberOfEC2Nodes:
     Description: The number of EC2 nodes to create for the ECS cluster. There must be
       enough nodes to run the number of secondaries plus the primary task.
@@ -454,12 +446,11 @@ Parameters:
     Type: String
   QsS3BucketName:
     Description: S3 bucket name for the Quick Start assets. This string can include
-      numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start
+      numbers, lowercase letters, and hyphens (-). It cannot start
       or end with a hyphen (-).
-    AllowedPattern: ^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$
+    AllowedPattern: ^[0-9a-z]+([0-9a-z-]*[0-9a-z])*$
     ConstraintDescription: Quick Start bucket name can include numbers, lowercase
-      letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen
-      (-).
+      letters, and hyphens (-). It cannot start or end with a hyphen (-).
     Default: aws-quickstart
     Type: String
   QsS3KeyPrefix:
@@ -503,7 +494,6 @@ Resources:
         ClusterName: !Ref ClusterName
         InstanceType: !Ref InstanceType
         VolumeSize: !Ref VolumeSize
-        EnableFargate: !Ref EnableFargate
         NumberOfSecondary: 1
         NumberOfEC2Nodes: !Ref NumberOfEC2Nodes
         ArtifactoryProduct: JFrog-Container-Registry
