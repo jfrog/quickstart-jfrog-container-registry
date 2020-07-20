@@ -1,0 +1,4 @@
+[submodule "submodules/quickstart-jfrog-artifactory"]
+	path = submodules/quickstart-jfrog-artifactory
+	url = https://github.com/aws-quickstart/quickstart-jfrog-artifactory.git
+	branch = master
