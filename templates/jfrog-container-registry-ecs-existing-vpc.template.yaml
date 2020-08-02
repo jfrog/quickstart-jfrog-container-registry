@@ -47,7 +47,7 @@ Metadata:
           - JcrVersion
           - ReleaseStage
           - NumberOfEC2Nodes
-          - SmCertName
+          - SmLicenseCertName
           - JcrServerName
           - MasterKey
           - ExtraJavaOptions
@@ -68,6 +68,7 @@ Metadata:
         Parameters:
           - QsS3BucketName
           - QsS3KeyPrefix
+          - QsS3BucketRegion
     ParameterLabels:
       KeyPairName:
         default: SSH key name
@@ -127,7 +128,7 @@ Metadata:
         default: EC2 instance type
       VolumeSize:
         default: EBS Root volume size
-      SmCertName:
+      SmLicenseCertName:
         default: JFrog Container Registry certificate secret name
       JcrServerName:
         default: JFrog Container Registry server name
@@ -157,6 +158,9 @@ Metadata:
         default: Quick Start S3 bucket name
       QsS3KeyPrefix:
         default: Quick Start S3 key prefix
+      QsS3BucketRegion:
+        default: Quick Start S3 bucket region
+
 Parameters:
   KeyPairName:
     Description: The name of an existing public/private key pair, which allows you
@@ -386,7 +390,7 @@ Parameters:
       - "BETA"
     Default: "GA"
     Type: String
-  SmCertName:
+  SmLicenseCertName:
     Description: The secret name created in AWS Secrets Manager which contains the SSL certificate, certificate key.
     Type: String
   JcrServerName:
@@ -510,6 +514,10 @@ Parameters:
       uppercase letters, hyphens (-), and forward slash (/).
     Default: quickstart-jfrog-container-registry/
     Type: String
+  QsS3BucketRegion:
+    Default: 'us-east-1'
+    Description: AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. When using your own bucket, you must specify this value.
+    Type: String
 
 Conditions:
   EnableBastion: !Equals [!Ref 'ProvisionBastionHost', 'Enabled']
@@ -551,7 +559,7 @@ Resources:
         ArtifactoryProduct: JFrog-Container-Registry
         ArtifactoryVersion: !Ref JcrVersion
         ReleaseStage: !Ref ReleaseStage
-        SmLicenseCertName: !Ref SmCertName
+        SmLicenseCertName: !Ref SmLicenseCertName
         ArtifactoryServerName: !Ref JcrServerName
         MasterKey: !Ref MasterKey
         ExtraJavaOptions: !Ref ExtraJavaOptions
@@ -566,6 +574,7 @@ Resources:
         MultiAzDatabase: !Ref MultiAzDatabase
         QsS3BucketName: !Ref QsS3BucketName
         QsS3KeyPrefix: !Sub "${QsS3KeyPrefix}submodules/quickstart-jfrog-artifactory/"
+        QsS3BucketRegion: !Ref QsS3BucketRegion
 
 Outputs:
   JFrogContainerRegistryUrl:

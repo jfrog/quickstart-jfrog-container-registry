@@ -39,7 +39,7 @@ Metadata:
           default: JFrog Container Registry Configuration
         Parameters:
           - JcrVersion
-          - SmCertName
+          - SmLicenseCertName
           - JcrServerName
           - MasterKey
           - ExtraJavaOptions
@@ -104,7 +104,7 @@ Metadata:
         default: EC2 instance type
       JcrVersion:
         default: JFrog Container Registry version
-      SmCertName:
+      SmLicenseCertName:
         default: JFrog Container Registry certificate secret name
       JcrServerName:
         default: JFrog Container Registry server name
@@ -311,7 +311,7 @@ Parameters:
     ConstraintDescription: A version that matches X.X.X per JFrog Container Registry releases.
     Default: 7.2.1
     Type: String
-  SmCertName:
+  SmLicenseCertName:
     Description: The secret name created in AWS Secrets Manager which contains the SSL certificate and certificate key.
     Type: String
   JcrServerName:
@@ -471,7 +471,7 @@ Resources:
         InstanceType: !Ref InstanceType
         ArtifactoryProduct: 'JFrog-Container-Registry'
         ArtifactoryVersion: !Ref JcrVersion
-        SmLicenseCertName: !Ref SmCertName
+        SmLicenseCertName: !Ref SmLicenseCertName
         ArtifactoryServerName: !Ref JcrServerName
         MasterKey: !Ref MasterKey
         ExtraJavaOptions:  !Ref ExtraJavaOptions
