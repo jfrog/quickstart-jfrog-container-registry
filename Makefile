@@ -31,8 +31,6 @@ submodules:
 	git submodule foreach --recursive 'git submodule update --remote --recursive'
 	git submodule foreach --recursive 'git submodule foreach --recursive "git submodule init"'
 	git submodule foreach --recursive 'git submodule foreach --recursive "git submodule update --remote --recursive"'
-	cd submodules/quickstart-jfrog-artifactory/submodules/quickstart-linux-bastion
-	git checkout f7ea3f4eb39de5c80852c77a5e562a33f852c77f
 
 help:
 	@echo   "make test  : executes ${VENVBIN}/taskcat"
