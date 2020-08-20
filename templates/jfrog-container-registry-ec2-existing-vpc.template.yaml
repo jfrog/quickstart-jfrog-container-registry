@@ -136,6 +136,8 @@ Metadata:
         default: Quick Start S3 bucket name
       QsS3KeyPrefix:
         default: Quick Start S3 key prefix
+      QsS3BucketRegion:
+        default: Quick Start S3 bucket region
 
 Parameters:
   KeyPairName:
@@ -438,6 +440,10 @@ Parameters:
       uppercase letters, hyphens (-), and forward slash (/).
     Default: quickstart-jfrog-container-registry/
     Type: String
+  QsS3BucketRegion:
+    Default: 'us-east-1'
+    Description: AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. When using your own bucket, you must specify this value.
+    Type: String
 
 Conditions:
   EnableBastion: !Equals [!Ref 'ProvisionBastionHost', 'Enabled']
@@ -486,6 +492,7 @@ Resources:
         MultiAzDatabase: !Ref MultiAzDatabase
         QsS3BucketName: !Ref QsS3BucketName
         QsS3KeyPrefix: !Sub "${QsS3KeyPrefix}submodules/quickstart-jfrog-artifactory/"
+        QsS3BucketRegion: !Ref QsS3BucketRegion
 
 Outputs:
   JFrogContainerRegistryUrl:

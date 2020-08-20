@@ -147,25 +147,25 @@ Metadata:
         default: Lambda zips bucket name
 Parameters:
   KeyPairName:
-    Description: The name of an existing public/private key pair, which allows you
+    Description: Name of an existing public/private key pair, which allows you
       to securely connect to your instance after it launches.
     Type: AWS::EC2::KeyPair::KeyName
   AccessCidr:
-    Description: The CIDR IP range that is permitted to access JFrog Container Registry.
+    Description: CIDR IP range that is permitted to access Artifactory.
       We recommend that you set this value to a trusted IP range.
       For example, you might want to grant only your corporate network access to the software.
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/([0-9]|[1-2][0-9]|3[0-2]))$
     Type: String
   RemoteAccessCidr:
     Description:
-      The remote CIDR range for allowing SSH into the Bastion instance.
+      Remote CIDR range for allowing SSH into the bastion instance.
       We recommend that you set this value to a trusted IP range.
       For example, you might want to grant specific ranges inside your corporate network SSH access.
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/([0-9]|[1-2][0-9]|3[0-2]))$
     ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/x
     Type: String
   AdditionalEKSAdminArns:
-    Description: '[OPTIONAL] The Amazon Resource Names (ARNs): a comma-separated list of IAM users and roles to be granted admin access to the EKS cluster.'
+    Description: '[OPTIONAL] Amazon Resource Names (ARNs): a comma-separated list of IAM users and roles to be granted admin access to the EKS cluster.'
     Default: ""
     Type: CommaDelimitedList
   KubeConfigKmsContext:
@@ -174,56 +174,56 @@ Parameters:
     Type: String
   AvailabilityZones:
     Description:
-      The list of Availability Zones to use for the subnets in the VPC. Three
+      List of Availability Zones to use for the subnets in the VPC. Three
       Availability Zones are used for this deployment, and the logical order of your
       selections is preserved.
     Type: List<AWS::EC2::AvailabilityZone::Name>
   VpcCidr:
-    Description: The CIDR block for the VPC.
+    Description: CIDR block for the VPC.
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
     ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
     Default: 10.0.0.0/16
     Type: String
   PrivateSubnet1Cidr:
-    Description: The CIDR block for private subnet 1 located in Availability Zone 1.
+    Description: CIDR block for private subnet 1 located in Availability Zone 1.
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
     ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
     Default: 10.0.0.0/19
     Type: String
   PrivateSubnet2Cidr:
-    Description: The CIDR block for private subnet 2 located in Availability Zone 2.
+    Description: CIDR block for private subnet 2 located in Availability Zone 2.
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
     ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
     Default: 10.0.32.0/19
     Type: String
   PrivateSubnet3Cidr:
-    Description: The CIDR block for private subnet 3 located in Availability Zone 3.
+    Description: CIDR block for private subnet 3 located in Availability Zone 3.
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
     ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
     Default: 10.0.64.0/19
     Type: String
   PublicSubnet1Cidr:
     Description:
-      The CIDR block for the public (DMZ) subnet 1 located in Availability Zone 1.
+      CIDR block for the public (DMZ) subnet 1 located in Availability Zone 1.
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
     ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
     Default: 10.0.128.0/20
     Type: String
   PublicSubnet2Cidr:
     Description:
-      The CIDR block for the public (DMZ) subnet 2 located in Availability Zone 2.
+      CIDR block for the public (DMZ) subnet 2 located in Availability Zone 2.
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
     ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
     Default: 10.0.144.0/20
     Type: String
   PublicSubnet3Cidr:
-    Description: The CIDR block for the public (DMZ) subnet 3 located in Availability Zone 3.
+    Description: CIDR block for the public (DMZ) subnet 3 located in Availability Zone 3.
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
     ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
     Default: 10.0.160.0/20
     Type: String
   NumberOfNodes:
-    Description: The initial number of Eks node instances and NGINX pods to create.
+    Description: Initial number of Eks node instances and NGINX pods to create.
     AllowedValues:
       - 1
       - 2
@@ -231,7 +231,7 @@ Parameters:
     Default: 1
     Type: Number
   NodeInstanceType:
-    Description: The Amazon EC2 instance type for the nodes hosting the Kubernetes pods.
+    Description: Amazon EC2 instance type for the nodes hosting the Kubernetes pods.
     AllowedValues:
       - t3.nano
       - t3.micro
@@ -285,11 +285,11 @@ Parameters:
     Default: m5.xlarge
     Type: String
   NodeVolumeSize:
-    Description: The size of EBS volumes for master node instances, in GB.
+    Description: Size of EBS volumes for master node instances, in GB.
     Default: 200
     Type: String
   KubernetesVersion:
-    Description: The Kubernetes control plane version.
+    Description: Kubernetes control plane version.
     AllowedValues: ["1.14", "1.13", "1.12"]
     Default: "1.14"
     Type: String
@@ -302,7 +302,7 @@ Parameters:
     Default: "Enabled"
     Type: String
   BastionInstanceType:
-    Description: The size of the bastion instances.
+    Description: Size of the bastion instances.
     AllowedValues:
       - t2.nano
       - t2.micro
@@ -319,7 +319,7 @@ Parameters:
     Default: "t2.micro"
     Type: String
   BastionRootVolumeSize:
-    Description: The size of the root volume on the bastion instances.
+    Description: Size of the root volume on the bastion instances.
     Default: 10
     Type: Number
   BastionEnableTcpForwarding:
@@ -341,7 +341,7 @@ Parameters:
     Default: "false"
     Type: String
   BastionOs:
-    Description: The Linux distribution for the Amazon Machine Image (AMI) to be used for the bastion instances.
+    Description: Linux distribution for the Amazon Machine Image (AMI) to be used for the bastion instances.
     AllowedValues:
       - "Amazon-Linux2-HVM"
       - "CentOS-7-HVM"
@@ -350,7 +350,7 @@ Parameters:
     Default: "Amazon-Linux2-HVM"
     Type: String
   JcrVersion:
-    Description: The version of JFrog Container Registry that you want to deploy into the Quick Start.
+    Description: Version of JFrog Container Registry that you want to deploy into the Quick Start.
       Please see the release notes to select the version you want to deploy.
       https://www.jfrog.com/confluence/display/RTF/Release+Notes
     AllowedPattern: ^(([0-9]|[1-9][0-9])\.){2}([1-9][0-9]|[0-9])$
@@ -396,10 +396,10 @@ Parameters:
     Default: xSmall
     Type: String
   SmLicenseCertName:
-    Description: The secret name created in AWS Secrets Manager which contains the SSL certificate and certificate key.
+    Description: Secret name created in AWS Secrets Manager which contains the SSL certificate and certificate key.
     Type: String
   MasterKey:
-    Description: The master key for the JFrog Container Registry cluster. Generate a master key by using the command '$openssl rand -hex 16'.
+    Description: Master key for the JFrog Container Registry cluster. Generate a master key by using the command '$openssl rand -hex 16'.
     AllowedPattern: ^[a-zA-Z0-9]+$
     MinLength: '1'
     MaxLength: '64'
@@ -407,7 +407,7 @@ Parameters:
     NoEcho: 'true'
     Type: String
   DatabaseName:
-    Description: The name for your Database instance. The name must be unique across all Database instances
+    Description: Name for your Database instance. The name must be unique across all Database instances
       owned by your AWS account in the current AWS Region. The Database instance identifier is case-insensitive,
       but is stored as all lowercase (as in "mydbinstance").
     AllowedPattern: ^[a-zA-Z]([a-zA-Z0-9])+$
@@ -417,14 +417,14 @@ Parameters:
     Default: artdb
     Type: String
   DatabaseEngine:
-    Description: The database engine that you want to run, currently locked to MySQL.
+    Description: Database engine that you want to run, currently locked to MySQL.
     AllowedValues:
       - MySQL
       - Postgres
     Default: Postgres
     Type: String
   DatabaseUser:
-    Description: The login ID for the master user of your Database instance.
+    Description: Login ID for the master user of your Database instance.
     MinLength: '1'
     MaxLength: '16'
     AllowedPattern: ^[a-zA-Z]([a-zA-Z0-9])+$
@@ -432,7 +432,7 @@ Parameters:
     Default: jcradmin
     Type: String
   DatabasePassword:
-    Description: The password for the JFrog Container Registry database user.
+    Description: Password for the JFrog Container Registry database user.
     AllowedPattern: ^[^ \\']+$
     MinLength: '8'
     MaxLength: '12'
@@ -442,7 +442,7 @@ Parameters:
     NoEcho: 'true'
     Type: String
   DatabaseInstance:
-    Description: The size of the database to be deployed as part of the Quick Start.
+    Description: Size of the database to be deployed as part of the Quick Start.
     AllowedValues:
       - db.m3.medium
       - db.m3.large
@@ -463,7 +463,7 @@ Parameters:
     Default: db.m4.large
     Type: String
   DatabaseAllocatedStorage:
-    Description: The size in GB of the available storage for the database instance.
+    Description: Size in gigabytes of the available storage for the database instance.
     MinValue: 5
     MaxValue: 1024
     Default: 10
