@@ -436,9 +436,8 @@ Parameters:
     Default: artdb
     Type: String
   DatabaseEngine:
-    Description: The database engine that you want to run, currently locked to MySQL.
+    Description: The database engine that you want to run, currently locked to Postgres.
     AllowedValues:
-      - MySQL
       - Postgres
     Default: Postgres
     Type: String

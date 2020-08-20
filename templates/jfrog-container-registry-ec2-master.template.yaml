@@ -363,7 +363,6 @@ Parameters:
   DatabaseEngine:
     Description: Database engine that you want to run.
     AllowedValues:
-      - MySQL
       - Postgres
     Default: Postgres
     Type: String
