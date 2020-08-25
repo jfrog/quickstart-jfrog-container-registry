@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'JFrog Container Registry ECS Quick Start Deployment'
+Description: 'JFrog Container Registry ECS Quick Start Deployment (qs-1r2u9os5t)'
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
