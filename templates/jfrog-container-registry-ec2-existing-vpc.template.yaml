@@ -1,6 +1,8 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: 'JFrog Container Registry EC2 Existing VPC Quick Start Deployment (qs-1r2u9os5n)'
 Metadata:
+  QuickStartDocumentation:
+    EntrypointName: "Launch into an existing VPC"
   AWS::CloudFormation::Interface:
     ParameterGroups:
       - Label:
