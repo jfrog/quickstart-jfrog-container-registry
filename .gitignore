@@ -3,3 +3,4 @@ venv/
 .taskcat_overrides.yaml
 .taskcat/
 taskcat_outputs/
+*DS_Store
