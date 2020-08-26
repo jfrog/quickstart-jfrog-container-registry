@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'JFrog Container Registry Quick Start Deployment'
+Description: 'JFrog Container Registry EKS existing VPC Quick Start Deployment (qs-1r2u9os6i)'
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -534,12 +534,16 @@ Rules:
 
 Conditions:
   EnableBastion: !Equals [!Ref 'ProvisionBastionHost', 'Enabled']
+  UsingDefaultBucket: !Equals [!Ref QsS3BucketName, 'aws-quickstart']
 
 Resources:
   JrogContainerRegistryEksStack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: !Sub 'https://${QsS3BucketName}.s3.amazonaws.com/${QsS3KeyPrefix}submodules/quickstart-jfrog-artifactory/templates/jfrog-artifactory-eks-existing-vpc.template.yaml'
+      TemplateURL: !Sub
+        - https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QsS3KeyPrefix}submodules/quickstart-jfrog-artifactory/templates/jfrog-artifactory-eks-existing-vpc.template.yaml
+        - S3Bucket: !If [UsingDefaultBucket, !Sub '${QsS3BucketName}-${AWS::Region}', !Ref 'QsS3BucketName']
+          S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref 'QsS3BucketRegion']
       Parameters:
         KeyPairName: !Ref KeyPairName
         AccessCidr: !Ref AccessCidr
