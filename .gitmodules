@@ -2,3 +2,6 @@
 	path = submodules/quickstart-jfrog-artifactory
 	url = https://github.com/aws-quickstart/quickstart-jfrog-artifactory.git
 	branch = master
+[submodule "docs/boilerplate"]
+	path = docs/boilerplate
+	url = https://github.com/aws-quickstart/quickstart-documentation-base-common.git
