@@ -19,7 +19,7 @@ match the ELB DNS unless you configure Amazon Route 53.
 . The default user name and password for Container Registry are `admin` and `password`, respectively. Enter your credentials, and choose *Login*. For more information, see
 JFrog https://www.jfrog.com/confluence/display/RTF/Managing+Users#ManagingUsers-AdministratorUsers[Users and Groups^].
 
-This loads the setup wizard for initial configuration. Choose *Next*. (see <<get_started_2>>).
+This loads the setup wizard for initial configuration. Choose *Get Started*. (see <<get_started_2>>).
 
 :xrefstyle: short
 [#get_started_2]
@@ -28,40 +28,70 @@ This loads the setup wizard for initial configuration. Choose *Next*. (see <<get
 image::../images/get_started_2.png[image_placeholder,width=648,height=439]
 
 [start=3]
-. Set a secure administrator password for your deployment, and then choose *Next* (see <<get_started_3>>).
+. Read and accept the End User Lincense Agreement (EULA), and then choose *Next* (see <<get_started_3>>).
 
 :xrefstyle: short
 [#get_started_3]
-.Set administrator password
+.Accept the EULA
 [link=../{quickstart-project-name}/images/get_started_3.png]
 image::../images/get_started_3.png[image_placeholder,width=648,height=439]
 
 [start=4]
-. Optionally, configure proxy settings for remote resources. (see <<get_started_4>>).
+. Optionally, sign up for notifications from JFrog (see <<get_started_4>>).
 
 :xrefstyle: short
 [#get_started_4]
-.Configure proxy settings if required
+.Sign up for updates from JFrog
 [link=../{quickstart-project-name}/images/get_started_4.png]
 image::../images/get_started_4.png[image_placeholder,width=648,height=439]
 
-[start=6]
-. Select the repositories that you require, and then choose *Create* (see <<get_started_5>>).
+
+[start=5]
+. Set a secure administrator password for your deployment, and then choose *Next* (see <<get_started_5>>).
 
 :xrefstyle: short
 [#get_started_5]
-.Select repositories
+.Set administrator password
 [link=../{quickstart-project-name}/images/get_started_5.png]
 image::../images/get_started_5.png[image_placeholder,width=648,height=439]
 
-[start=7]
-. Choose *Finish* (see <<get_started_6>>).
+[start=6]
+. Optionally, configure the base URL setting. Because this deployment uses a proxy, it’s highly recommended that you update the base URL of Container Registry. 
+More information regarding this setting can be found in the https://www.jfrog.com/confluence/display/RTF/Configuring+Artifactory#ConfiguringArtifactory-GeneralSettings[Getting Started guide^] (see <<get_started_6>>).
 
 :xrefstyle: short
 [#get_started_6]
-.SFinal wizard screen
+.Configure proxy settings if required
 [link=../{quickstart-project-name}/images/get_started_6.png]
 image::../images/get_started_6.png[image_placeholder,width=648,height=439]
+
+
+[start=7]
+. Optionally, configure proxy settings for remote resources. (see <<get_started_7>>).
+
+:xrefstyle: short
+[#get_started_7]
+.Configure proxy settings if required
+[link=../{quickstart-project-name}/images/get_started_7.png]
+image::../images/get_started_7.png[image_placeholder,width=648,height=439]
+
+[start=8]
+. Select the repositories that you require, and then choose *Create* (see <<get_started_8>>).
+
+:xrefstyle: short
+[#get_started_8]
+.Select repositories
+[link=../{quickstart-project-name}/images/get_started_8.png]
+image::../images/get_started_8.png[image_placeholder,width=648,height=439]
+
+[start=9]
+. Choose *Finish* (see <<get_started_9>>).
+
+:xrefstyle: short
+[#get_started_9]
+.SFinal wizard screen
+[link=../{quickstart-project-name}/images/get_started_9.png]
+image::../images/get_started_9.png[image_placeholder,width=648,height=439]
 
 [start=8]
 . Complete the administrative tasks by configuring the following:
