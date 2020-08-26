@@ -13,21 +13,4 @@
 // _<AMI information>The Quick Start requires a subscription to the Amazon Machine Image (AMI) for {partner-product-name}, which is available from https://aws.amazon.com/marketplace/[AWS Marketplace^]. Additional pricing, terms, and conditions may apply. For instructions, see link:#step-2.-subscribe-to-the-software-ami[step 2] in the deployment section._
 
 
-This Quick Start requires an Enterprise or Enterprise+ license for Artifactory. It also
-requires a subscription to the http://aws.amazon.com/marketplace/pp/B086PTRY8G[JFrog Enterprise EC2 (Enterprise Artifact Repository, SelfHosted)^] Amazon Machine Image (AMI) in https://aws.amazon.com/marketplace[AWS Marketplace^]. To use the Quick Start in
-your production environment, sign up for a https://jfrog.com/artifactory/free-trial-aws/#enterprise[free trial license^], which includes three
-Artifactory Enterprise licenses. Place the license keys in the specified fields when you
-launch the Quick Start. Enterprise or Enterprise+ licenses are required due to the following
-features of this deployment:
-
-* High availability
-* Storing S3 objects
-
-NOTE: If the license isn’t an Enterprise or Enterprise+ license, the license is invalid,
-or the license is not included, the deployment will fail. Also, ensure that the number
-of secondary Artifactory servers is at most the amount licensed minus one, for the
-primary server. If you specify too many servers, see the <<FAQ>> section for instructions.
-
-If you use a free trial, ensure that you convert to a permanent license before your trial ends,
-otherwise the nodes will become unresponsive. You can request a quote by contacting
-https://jfrog.com/pricing/[JFrog^].
+This Quick Start does not require you to purchase any license as JFrog Container Registry is a free product.

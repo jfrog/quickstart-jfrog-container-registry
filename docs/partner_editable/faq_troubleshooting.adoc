@@ -2,16 +2,6 @@
 
 == FAQ
 
-*Q.* . I provisioned more secondary nodes than I have licenses, and I cannot access
-Artifactory. What do I do?
-
-*A.* In the AWS CloudFormation console, choose **Update stack**, and reduce the number of
-secondary nodes to the number of licenses you purchased, minus one license for the master.
-
-*Q.* My license ran out and Artifactory is unresponsive. How do I fix this?
-
-*A.* Reduce the number of secondary nodes to zero, and contact JFrog for a new license.
-
 *Q.* My certificate is out of date. How do I update it?
 
 *A.* The certificate is handled via Ansible or Helm. In the AWS CloudFormation console,
