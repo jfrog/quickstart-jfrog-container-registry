@@ -174,7 +174,7 @@ By default, the load balancer does not match your certificate. You must configur
 according to your organization’s configuration, which is highly recommended for a
 production deployment.
 When you create a new VPC, the private subnet CIDR is automatically provided to the
-database security group `ArtifactoryBDSG`. In the new VPC, the private subnet is accessible
+database security group `jcr-rds-sg`. In the new VPC, the private subnet is accessible
 only from the public subnet.
 When you deploy to an existing VPC, ensure similar rules are followed so that your
 Container Registry node is not accessible directly from the internet. Also, ensure that the private

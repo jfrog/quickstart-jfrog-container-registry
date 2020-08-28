@@ -2,6 +2,10 @@
 
 == FAQ
 
+*Q.* I provisioned more than 1 node and cannot access JCR. What do I do? 
+
+*A.* In the AWS CloudFormation console, choose *Update Stack,* choose *Next* twice, Accept the two IAM rules, then choose *Update Stack* to ensure the AutoScaling group is set back the required number of instances.
+
 *Q.* My certificate is out of date. How do I update it?
 
 *A.* The certificate is handled via Ansible or Helm. In the AWS CloudFormation console,

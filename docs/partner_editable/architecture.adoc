@@ -10,7 +10,7 @@ image::../images/architecture_diagram.png[Architecture,width=648,height=439]
 
 As shown in Figure 1, the Quick Start sets up the following:
 
-* An HA architecture that spans two Availability Zones.*
+* A highly resilient architecture that spans two Availability Zones.*
 * A VPC configured with public and private subnets, according to AWS best practices, to
 provide you with your own virtual network on AWS.*
 * A private and encrypted S3 bucket for repository storage.
@@ -31,12 +31,11 @@ In the private subnets:
 // Add bullet points for any additional components that are included in the deployment. Make sure that the additional components are also represented in the architecture diagram.
 ** A https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html[PostgreSQL^] instance on Amazon RDS that’s accessible from the
 private subnets on port 5532.
-** Two Amazon EC2 https://aws.amazon.com/autoscaling/[Auto Scaling^] groups, one for the primary node and one for the
-secondary nodes.
+** One Amazon EC2 https://aws.amazon.com/autoscaling/[Auto Scaling^] group for the Container Registry node.
 
 
 NOTE: The purpose of the Automatic Scaling groups is for automatic deployment of
-the primary node into another Availability Zone if a failure occurs. Do not modify the
+the Container Registry node into another Availability Zone if a failure occurs. Do not modify the
 number of instances.
 
 *The template that deploys the Quick Start into an existing VPC skips
@@ -45,14 +44,14 @@ configuration.
 
 === Auto Scaling groups
 
-The Auto Scaling group is designed to have one primary node. When an EC2 node or service fail, Auto Scaling groups automatically recreate the
+The Auto Scaling group is designed to have one Container Registry node. When an EC2 node or service fail, Auto Scaling groups automatically recreate the
 instances. For this reason, all configurations are done on boot and result in a loss of any
 data that are not stored in the Amazon RDS instance or S3 bucket.
 
 === Ansible init script
 
 Ansible is installed and configured to run only on initial boot. Ansible, in cooperation with
-the Auto Scaling group, initiates the required configuration and runs Container Registry.
+the Auto Scaling group, initiates the required configuration to run Container Registry.
 
 WARNING: Do not change the master key of the stack when updating the stack.
 Doing so results in an unsupported configuration that future nodes cannot join.
