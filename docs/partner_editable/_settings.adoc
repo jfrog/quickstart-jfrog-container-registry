@@ -1,14 +1,15 @@
-:quickstart-project-name: quickstart-jfrog-artifactory
-:partner-product-name: Artifactory
+:quickstart-project-name: quickstart-jfrog-container-registry
+:partner-product-name: Container Registry for EC2
+:partner-product-short-name: Container Registry
 :partner-company-name: JFrog Ltd.
-:doc-month: June
+:doc-month: September
 :doc-year: 2020
-:partner-contributors: Chris Hirsch, Jacob Batkalin, and Travis McVey, Trace3
+:partner-contributors: Mark Bennett, Trace3
 :quickstart-contributors: Yaniv Bossem and Dylan Owen, AWS Quick Start team
-:deployment_time: 30 minutes
+:deployment_time: 40 minutes
 :default_deployment_region: us-east-1
 // Uncomment these two attributes if you are leveraging
 // - an AWS Marketplace listing.
 // Additional content will be auto-generated based on these attributes.
 :marketplace_subscription:
-:marketplace_listing_url: http://aws.amazon.com/marketplace/pp/B086PTRY8G
+:marketplace_listing_url: https://aws.amazon.com/marketplace/pp/B086WLYVBX
