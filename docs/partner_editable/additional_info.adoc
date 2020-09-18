@@ -115,7 +115,7 @@ NOTE: Because the instances are backed by an AWS Marketplace AMI, the version yo
 image::../images/update_2.png[image_placeholder,width=648,height=439]
 
 [start=2]
-. On the *Prerequisite* screen, Choose *Use current template*, and then choose *Next*. (See <<update_3>>.)
+. On the *Prerequisite* screen, choose *Use current template*, and then choose *Next*. (See <<update_3>>.)
 
 :xrefstyle: short
 [#update_3]
