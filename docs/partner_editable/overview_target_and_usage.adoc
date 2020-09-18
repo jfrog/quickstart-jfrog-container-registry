@@ -3,25 +3,14 @@
 //Avoid borrowing text from third-party websites (copying text from AWS service documentation is fine). Also, avoid marketing-speak, focusing instead on the technical aspect.
 
 https://jfrog.com/container-registry/[JFrog Container Registry^] is a comprehensive and advanced repository manager, supporting Docker 
-containers and Helm Chart repositories for your Kubernetes deployments. 
-This Quick Start deploys Container Registry in a highly highly scalable and redundant configuration in the AWS Cloud.
+containers and Helm Chart repositories for your Kubernetes deployments. This Quick Start deploys Container Registry in a highly scalable and redundant configuration in the AWS Cloud.
 
-This Quick Start is for administrators who want the flexibility, scale, and availability of
-AWS through products such as virtual private clouds (VPCs), Amazon Elastic Compute
-Cloud (Amazon EC2), Amazon Simple Storage Service (Amazon S3), Elastic Load Balancing
-(ELB), and Amazon Relational Database Service (Amazon RDS) to deploy Container Registry as
-their Docker container and Helm Chart repository manager.
+This Quick Start is for administrators who want the flexibility, scale, and availability of AWS through products such as Amazon Virtual Private Cloud (Amazon VPC), Amazon Elastic Compute Cloud (Amazon EC2), Amazon Simple Storage Service (Amazon S3), Elastic Load Balancing (ELB), and Amazon Relational Database Service (Amazon RDS) to deploy Container Registry as their Docker container and Helm Chart repository manager.
 
-Amazon EC2, along with Amazon S3 and Amazon RDS, forms the foundation for the
-deployment. By using Amazon S3 and Amazon RDS as persistent storage for artifacts and
-the configuration, respectively, Container Registry can be completely redeployed, or upgraded in place, 
-depending on your requirements.
+Amazon EC2, Amazon S3, and Amazon RDS form the foundation for the deployment. Using Amazon S3 as persistent storage for artifacts and Amazon RDS for configuration, Container Registry can be completely redeployed or upgraded in place depending on your requirements.
 
 The default installation creates a single https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html[Amazon EC2 Auto Scaling^] group:
 
-* The Auto Scaling group is responsible for the single Container Registry node. This Auto Scaling group spans multiple Availablility Zones 
-within a Region to give the best possible recovery in the event of an infrastructure failure. 
+* The Auto Scaling group is responsible for the single Container Registry node. Spanning multiple Availability Zones within a Region, the Auto Scaling group provides the best possible recovery in the event of an infrastructure failure. 
 
-The Auto Scaling group is monitored by the Network Load Balancer, which is configured
-with https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html[health checks^] that validate the Container Registry service is up and running. If the endpoint
-returns an error response, a new node is recovered within 10 minutes.
+The Auto Scaling group is monitored by the Network Load Balancer, which is configured with https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html[health checks^] that validate that the Container Registry service is up and running. If the endpoint returns an error response, a new node is recovered within 10 minutes.

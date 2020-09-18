@@ -15,10 +15,10 @@ Due to the underlying JSON system, the parameters for both the certificate and c
 === Add the certificate to AWS Secrets Manager
 
 . Open AWS Secrets Manager in the same Region in which you deploy the Quick Start.
-. Choose Store a new secret.
-. Choose Other type of secret.
+. Choose *Store a new secret*.
+. Choose *Other type of secret*.
 . For the secret key value, create three rows for the certificate information.
-. Key names should be as follows, with the key values being the certificate details (see <<secret_manager>>)):
+. Key names should be as follows, with the key values being the certificate details (see <<secret_manager>>):
 .. `Certificate`
 .. `CertificateKey`
 .. `CertificateDomain`
