@@ -3,6 +3,7 @@ Description: 'JFrog Container Registry EC2 Quick Start Deployment (qs-1r2u9os3a)
 Metadata:
   QuickStartDocumentation:
     EntrypointName: "Launch into a new VPC"
+    Order: "1"
   AWS::CloudFormation::Interface:
     ParameterGroups:
       - Label:
@@ -36,7 +37,7 @@ Metadata:
           - VolumeSize
           - InstanceType
       - Label:
-          default: JFrog Container Registry Configuration
+          default: JFrog Container Registry configuration
         Parameters:
           - JcrVersion
           - SmLicenseCertName
@@ -57,7 +58,7 @@ Metadata:
           - DatabaseAllocatedStorage
           - MultiAzDatabase
       - Label:
-          default: AWS Quick Start Configuration
+          default: AWS Quick Start configuration
         Parameters:
           - QsS3BucketName
           - QsS3KeyPrefix
