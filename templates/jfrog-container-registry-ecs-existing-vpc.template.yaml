@@ -54,7 +54,7 @@ Metadata:
           - DefaultJavaMemSettings
           - AnsibleVaultPass
       - Label:
-          default: Amazon RDS Configuration
+          default: Amazon RDS configuration
         Parameters:
           - DatabaseName
           - DatabaseEngine
@@ -64,7 +64,7 @@ Metadata:
           - DatabaseAllocatedStorage
           - MultiAzDatabase
       - Label:
-          default: AWS Quick Start Configuration
+          default: AWS Quick Start configuration
         Parameters:
           - QsS3BucketName
           - QsS3KeyPrefix
@@ -524,8 +524,9 @@ Conditions:
 Resources:
   JrogContainerRegistryStack:
     Type: AWS::CloudFormation::Stack
-    Properties: !Sub
-        - https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QsS3KeyPrefix}submodules/quickstart-jfrog-artifactory/templates/jfrog-artifactory-ecs-existing-vpc.template.yaml'
+    Properties: 
+      TemplateURL: !Sub
+        - https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QsS3KeyPrefix}submodules/quickstart-jfrog-artifactory/templates/jfrog-artifactory-ecs-existing-vpc.template.yaml
         - S3Bucket: !If [UsingDefaultBucket, !Sub '${QsS3BucketName}-${AWS::Region}', !Ref 'QsS3BucketName']
           S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref 'QsS3BucketRegion']
       Parameters:

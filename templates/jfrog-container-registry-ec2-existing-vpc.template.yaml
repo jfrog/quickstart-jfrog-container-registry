@@ -64,6 +64,7 @@ Metadata:
         Parameters:
           - QsS3BucketName
           - QsS3KeyPrefix
+          - QsS3BucketRegion
     ParameterLabels:
       KeyPairName:
         default: SSH key name
