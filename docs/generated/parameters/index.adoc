@@ -1,1 +1,6 @@
-// placeholder
+
+=== Launch into a new VPC
+include::jfrog-container-registry-ec2-master.template.adoc[]
+
+=== Launch into an existing VPC
+include::jfrog-container-registry-ec2-existing-vpc.template.adoc[]

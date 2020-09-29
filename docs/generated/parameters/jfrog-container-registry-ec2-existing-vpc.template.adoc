@@ -1,0 +1,74 @@
+
+.Security configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|SSH key name
+(`KeyPairName`)|`**__Requires input__**`|Name of an existing key pair, which allows you to connect securely to your instance after it launches. This is the key pair you created in your preferred Region.|Permitted IP range
+(`AccessCidr`)|`**__Requires input__**`|CIDR IP range that is permitted to access Artifactory. We recommend that you set this value to a trusted IP range. For example, you might want to grant only your corporate network access to the software.|Remote access CIDR
+(`RemoteAccessCidr`)|`**__Requires input__**`|Remote CIDR range that allows you to connect to the bastion instance by using SSH. We recommend that you set this value to a trusted IP range. For example, you might want to grant specific ranges inside your corporate network SSH access.
+|===
+.Network configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|VPC ID
+(`VpcId`)|`**__Requires input__**`|ID of your existing VPC (e.g., vpc-0343606e).|VPC CIDR
+(`VpcCidr`)|`10.0.0.0/16`|CIDR block for the VPC.|Public subnet 1 ID
+(`PublicSubnet1Id`)|`**__Requires input__**`|ID of the public subnet in Availability Zone 1 in your existing VPC (e.g., subnet-z0376dab).|Public subnet 2 ID
+(`PublicSubnet2Id`)|`**__Requires input__**`|ID of the public subnet in Availability Zone 2 in your existing VPC (e.g., subnet-a29c3d84).|Private subnet 1 ID
+(`PrivateSubnet1Id`)|`**__Requires input__**`|ID of the private subnet in Availability Zone 1 in your existing VPC (e.g., subnet-a0246dcd).|Private subnet 2 ID
+(`PrivateSubnet2Id`)|`**__Requires input__**`|ID of the private subnet in Availability Zone 2 in your existing VPC (e.g., subnet-b58c3d67).|Private subnet 1 CIDR
+(`PrivateSubnet1Cidr`)|`10.0.0.0/19`|CIDR of the private subnet in Availability Zone 1 in your existing VPC (e.g., 10.0.0.0/19).|Private subnet 2 CIDR
+(`PrivateSubnet2Cidr`)|`10.0.32.0/19`|Cidr of the private subnet in Availability Zone 2 in your existing VPC (e.g., 10.0.32.0/19).
+|===
+.Bastion configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|Bastion instance
+(`ProvisionBastionHost`)|`Enabled`|Choose Disabled to skip creating a bastion instance. Due to the JFrog Container Registry nodes being created in private subnets, the default setting of Enabled this is highly recommended.|Bastion instance type
+(`BastionInstanceType`)|`t2.micro`|Size of the bastion instances.|Bastion operating system
+(`BastionOs`)|`Amazon-Linux2-HVM`|Linux distribution for the Amazon Machine Image (AMI) to be used for the bastion instances.|Bastion root volume size
+(`BastionRootVolumeSize`)|`10`|Size of the root volume on the bastion instances.|Bastion enable TCP forwarding
+(`BastionEnableTcpForwarding`)|`true`|Choose whether to enable TCPForwarding via the bootstrapping of the bastion instance or not.|Number of bastion instances
+(`NumBastionHosts`)|`1`|Number of bastion instances to create.|Bastion enable X11 forwarding
+(`BastionEnableX11Forwarding`)|`false`|Choose true to enable X11 via the bootstrapping of the bastion host. Setting this value to true will enable X Windows over SSH. X11 forwarding can be useful, but it is also a security risk, so it's recommended that you keep the default (false) setting.
+|===
+.Amazon EC2 configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|EBS root volume size
+(`VolumeSize`)|`200`|Size in gigabytes of the available storage; the Quick Start will create an Amazon Elastic Block Store (Amazon EBS) volumes of this size.|EC2 instance type
+(`InstanceType`)|`m4.xlarge`|EC2 instance type for the JFrog Container Registry instances.
+|===
+.JFrog Container Registry configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|JFrog Container Registry version
+(`JcrVersion`)|`7.2.1`|Version of JFrog Container Registry that you want to deploy into the Quick Start. Please see the release notes to select the version you want to deploy. https://www.jfrog.com/confluence/display/RTF/Release+Notes|JFrog Container Registry certificate secret name
+(`SmLicenseCertName`)|`**__Requires input__**`|Secret name created in AWS Secrets Manager which contains the SSL certificate and certificate key.|JFrog Container Registry server name
+(`JcrServerName`)|`**__Requires input__**`|Name of your JFrog Container Registry server. Ensure that this matches your certificate.|Master server key
+(`MasterKey`)|`**__Requires input__**`|Master key for the JFrog Container Registry cluster. Generate a master key by using the command '$openssl rand -hex 16'.|Extra Java options
+(`ExtraJavaOptions`)|`-Xss256k -XX:+UseG1GC`|Set Java Ooptions to pass to the JVM for Artifactory. For more information, see the Artifactory system requirements. https://www.jfrog.com/confluence/display/RTF/System+Requirements#SystemRequirements-RecommendedHardware. Please do not add Xms or Xmx settings without disabling DefaultJavaMemSettings.|Default Java memory settings
+(`DefaultJavaMemSettings`)|`true`|Choose false to overwrite the standard calculations of memory options to pass to the JVM for Artifactory. If overwriting them, ensure they are added to the ExtraJavaOptions to avoid the stack failing to provision.|Java keystore password
+(`KeystorePassword`)|`**__Requires input__**`|Java keystore password. For better security the password that you specify will replace the default Java keystore password.|Ansible Vault password
+(`AnsibleVaultPass`)|`**__Requires input__**`|Ansible Vault password to protect the JFrog Container Registry YAML configuration file generated during the Artifactory deployment. This YAML file is stored on the EC2 nodes and secured with this password.
+|===
+.Amazon RDS configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|Database name
+(`DatabaseName`)|`artdb`|Name of your database instance. The name must be unique across all instances owned by your AWS account in the current Region. The database instance identifier is case-insensitive, but it's stored in lowercase (as in "mydbinstance").|Database engine
+(`DatabaseEngine`)|`Postgres`|Database engine that you want to run, currently locked to Postgres.|Database user
+(`DatabaseUser`)|`jcradmin`|Login ID for the master user of your DB instance.|Database password
+(`DatabasePassword`)|`**__Requires input__**`|Password for the JFrog Container Registry database user.|Database instance type
+(`DatabaseInstance`)|`db.m4.large`|Size of the database to be deployed as part of the Quick Start.|Database allocated storage
+(`DatabaseAllocatedStorage`)|`10`|Size in gigabytes of the available storage for the database instance.|High available database
+(`MultiAzDatabase`)|`true`|Choose false to create an Amazon RDS instance in a single Availability Zone.
+|===
+.AWS Quick Start configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|Quick Start S3 bucket name
+(`QsS3BucketName`)|`aws-quickstart`|S3 bucket name for the Quick Start assets. This string can include numbers, lowercase letters, and hyphens (-). It cannot start or end with a hyphen (-).|Quick Start S3 key prefix
+(`QsS3KeyPrefix`)|`quickstart-jfrog-container-registry/`|S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).|Quick Start S3 bucket region
+(`QsS3BucketRegion`)|`us-east-1`|AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. When using your own bucket, you must specify this value.
+|===
