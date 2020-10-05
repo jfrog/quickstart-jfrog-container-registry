@@ -866,8 +866,7 @@ report bugs, or submit feature ideas for this Quick Start.
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://jfrog.com/container-registry/" target="_blank" rel="noopener">JFrog Container Registry</a> is a comprehensive and advanced repository manager, supporting Docker
-containers and Helm Chart repositories for your Kubernetes deployments. This Quick Start deploys Container Registry in a highly scalable and redundant configuration in the AWS Cloud.</p>
+<p><a href="https://jfrog.com/container-registry/" target="_blank" rel="noopener">JFrog Container Registry</a> is a comprehensive and advanced repository manager, supporting Docker containers and Helm Chart repositories for your Kubernetes deployments. This Quick Start deploys Container Registry in a highly scalable and redundant configuration in the Amazon Web Services (AWS) Cloud.</p>
 </div>
 <div class="paragraph">
 <p>This Quick Start is for administrators who want the flexibility, scale, and availability of AWS through products such as Amazon Virtual Private Cloud (Amazon VPC), Amazon Elastic Compute Cloud (Amazon EC2), Amazon Simple Storage Service (Amazon S3), Elastic Load Balancing (ELB), and Amazon Relational Database Service (Amazon RDS) to deploy Container Registry as their Docker container and Helm Chart repository manager.</p>
@@ -967,16 +966,16 @@ After you deploy the Quick Start, enable the <a href="https://docs.aws.amazon.co
 <h2 id="_architecture">Architecture</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Deploying this Quick Start for a new virtual private cloud (VPC) with default parameters builds the following Container Registry environment in the AWS Cloud.</p>
+<p>Deploying this Quick Start for a new Virtual Private Cloud (VPC) with default parameters builds the following Container Registry environment in the AWS Cloud.</p>
 </div>
 <div id="architecture1" class="imageblock">
 <div class="content">
 <a class="image" href="images/architecture_diagram.png"><img src="images/architecture_diagram.png" alt="Architecture" width="648" height="439"></a>
 </div>
-<div class="title">Figure 1. Quick Start architecture for <em>Container Registry for EC2</em> on AWS</div>
+<div class="title">Figure 1. Quick Start architecture for Container Registry for EC2 on AWS</div>
 </div>
 <div class="paragraph">
-<p>As shown in figure 1, the Quick Start sets up the following:</p>
+<p>As shown in <a href="#architecture1">Figure 1</a>, the Quick Start sets up the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1014,10 +1013,10 @@ to the Container Registry primary node in the private subnets.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>A <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html" target="_blank" rel="noopener">PostgreSQL</a> instance on Amazon RDS that’s accessible from the private subnets on port 5532.</p>
+<p>One Amazon EC2 <a href="https://aws.amazon.com/autoscaling/" target="_blank" rel="noopener">Auto Scaling</a> group for the Container Registry node.</p>
 </li>
 <li>
-<p>One Amazon EC2 <a href="https://aws.amazon.com/autoscaling/" target="_blank" rel="noopener">Auto Scaling</a> group for the Container Registry node.</p>
+<p>A <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html" target="_blank" rel="noopener">PostgreSQL</a> instance on Amazon RDS that’s accessible from the private subnets on port 5532.</p>
 </li>
 </ul>
 </div>
@@ -1057,8 +1056,7 @@ data that are not stored in the Amazon RDS instance or S3 bucket.</p>
 <td class="content">
 Do not change the master key of the stack when updating the stack. Doing so results in an unsupported configuration that future nodes cannot join. To update an expired Secure Sockets Layer (SSL) certificate, change the CloudFormation stack certificate and certificate key inputs, and then redeploy the nodes (see <a href="#_updating_container_registry">Updating Container Registry</a>).<br>
 <br>
-If you change the certificate and certificate key manually on the EC2 instances (instead of updating the CloudFormation stack), your
-manual changes are lost at the next update or reboot, which results in an unwanted configuration.
+If you change the certificate and certificate key manually on the EC2 instances (instead of updating the CloudFormation stack), your manual changes are lost at the next update or reboot, which results in an unwanted configuration.
 </td>
 </tr>
 </table>
@@ -1300,7 +1298,7 @@ Certain Regions are available on an opt-in basis. Refer to the AWS Documentation
 <p>For the secret key value, create three rows for the certificate information.</p>
 </li>
 <li>
-<p>Key names should be as follows, with the key values being the certificate details (see <a href="#secret_manager">Secrets Manager key-value page</a>):</p>
+<p>Key names should be as follows, with the key values being the certificate details (see <a href="#secret_manager">Figure 2</a>):</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
