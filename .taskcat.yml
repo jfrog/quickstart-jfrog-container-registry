@@ -2,10 +2,11 @@ project:
   name: quickstart-jfrog-container-registry
   owner: quickstart-eng@amazon.com
   s3_object_acl: public-read
-  lambda_source_path: submodules/quickstart-jfrog-artifactory/submodules/quickstart-amazon-eks/functions/source
-  lambda_zip_path: submodules/quickstart-jfrog-artifactory/submodules/quickstart-amazon-eks/functions/packages
-  s3_enable_sig_v2: True
+  # lambda_source_path: submodules/quickstart-jfrog-artifactory/submodules/quickstart-amazon-eks/functions/source
+  # lambda_zip_path: submodules/quickstart-jfrog-artifactory/submodules/quickstart-amazon-eks/functions/packages
+  s3_object_acl: public-read
   s3_regional_buckets: True
+  s3_bucket: tcat-422383ecc658557f9a377abae675aac0  # commercial accounts
   regions:
     - us-east-1
     - us-east-2
@@ -22,16 +23,33 @@ project:
     - af-south-1
 
 tests:
+  # jfrog-jcr-7102:
+  #   auth:
+  #     default: default
+  #     us-gov-west-1: gov
+  #     us-gov-east-1: gov
+  #   parameters:
+  #     AvailabilityZone: "$[taskcat_genaz_1]"
+  #     KeyPairName: "ArtCldFrm1"
+  #     # ArtifactVersion: 7.10.2
+  #     RemoteAccessCidr: "0.0.0.0/0"
+  #     QsS3BucketName: "$[taskcat_autobucket]"
+  #     QsS3KeyPrefix: "quickstart-jfrog-artifactory/"
+  #     QsS3BucketRegion: "$[taskcat_current_region]"
+  #   template: templates/jfrog-ami-master.template.yaml
+  #   regions:
+  #     - us-east-1
+
   jfrog-container-registry-ec2:
     parameters:
-      KeyPairName: "$[taskcat_getkeypair]"
+      KeyPairName: "ArtCldFrm1"
       AvailabilityZones: "$[taskcat_genaz_2]"
-      AccessCidr: "10.0.0.0/16"
-      RemoteAccessCidr: "10.0.0.0/16"
-      JcrVersion: 7.2.1
+      AccessCidr: "0.0.0.0/0"
+      RemoteAccessCidr: "0.0.0.0/0"
+      JcrVersion: 7.10.2
       JcrServerName: "artifactory"
-      SmLicenseCertName: "override"
-      MasterKey: "override"
+      SmLicenseCertName: "jfrog-artifactory"
+      MasterKey: "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
       KeystorePassword: "$[taskcat_genpass_8A]"
       AnsibleVaultPass: "$[taskcat_genpass_8A]"
       MultiAzDatabase: "false"
@@ -43,20 +61,8 @@ tests:
       QsS3BucketRegion: "$[taskcat_current_region]"
     template: templates/jfrog-container-registry-ec2-master.template.yaml
     regions:
-      # - us-east-1
-      - us-west-2
-      # - us-east-2
-      # # - us-west-1
-      # - eu-central-1
-      # - eu-west-1
-      # - eu-west-2
-      # - eu-west-3      
-      # - ap-southeast-2
-      # - eu-north-1
-      # - eu-central-1
-      # - sa-east-1
-      # - eu-south-1
-      # - af-south-1
+      - us-east-1
+
   # jfrog-container-registry-ecs:
   #   parameters:
   #     KeyPairName: "$[taskcat_getkeypair]"
