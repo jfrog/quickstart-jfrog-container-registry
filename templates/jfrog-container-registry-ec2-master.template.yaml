@@ -129,7 +129,7 @@ Metadata:
       DatabaseAllocatedStorage:
         default: Database allocated storage
       MultiAzDatabase:
-        default: High available database
+        default: High-availability database
       QsS3BucketName:
         default: Quick Start S3 bucket name.
       QsS3KeyPrefix:
@@ -254,7 +254,7 @@ Parameters:
     Default: '1'
     Type: String
   VolumeSize:
-    Description: Size in gigabytes of available storage. The Quick Start creates an
+    Description: Size in gigabytes of available storage (min 10GB). The Quick Start creates an
       Amazon Elastic Block Store (Amazon EBS) volumes of this size.
     Default: 200
     Type: Number
@@ -296,10 +296,11 @@ Parameters:
       https://www.jfrog.com/confluence/display/RTF/Release+Notes
     AllowedPattern: ^(([0-9]|[1-9][0-9])\.){2}([1-9][0-9]|[0-9])$
     ConstraintDescription: A version that matches X.X.X per JFrog Container Registry releases.
-    Default: 7.2.1
+    Default: 7.10.2
     Type: String
   SmLicenseCertName:
     Description: Secret name created in AWS Secrets Manager which contains the SSL certificate and certificate key.
+    Default: ''
     Type: String
   JcrServerName:
     Description: Name of your JFrog Container Registry server. Ensure that this matches your certificate.
@@ -320,7 +321,7 @@ Parameters:
     Type: String
   DefaultJavaMemSettings:
     Description: Choose false to overwrite the standard calculations of memory options to pass to the JVM for Artifactory.
-      If overwriting them, ensure they are added to the ExtraJavaOptions to avoid the stack failing to provision.
+      If you plan to overwrite them, ensure they are added to the ExtraJavaOptions to avoid the stack failing to provision.
     ConstraintDescription: True or False
     AllowedValues:
       - "true"
@@ -375,15 +376,11 @@ Parameters:
   DatabaseInstance:
     Description: Size of the database to be deployed as part of the Quick Start.
     AllowedValues:
-      - db.m3.medium
-      - db.m3.large
-      - db.m3.xlarge
-      - db.m3.2xlarge
-      - db.m4.large
-      - db.m4.xlarge
-      - db.m4.2xlarge
-      - db.m4.10xlarge
-      - db.m4.16xlarge
+      - db.m5.large
+      - db.m5.xlarge
+      - db.m5.2xlarge
+      - db.m5.10xlarge
+      - db.m5.16xlarge
       - db.m5.large
       - db.m5.xlarge
       - db.m5.2xlarge
@@ -391,7 +388,7 @@ Parameters:
       - db.m5.12xlarge
       - db.m5.24xlarge
     ConstraintDescription: Must be a valid database Instance Type.
-    Default: db.m4.large
+    Default: db.m5.large
     Type: String
   DatabaseAllocatedStorage:
     Description: Size in gigabytes of available storage for the database instance.
